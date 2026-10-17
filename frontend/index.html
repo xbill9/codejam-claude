@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Tailor — Google XYZ Bullet Transformer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-mark">⚡</div>
+        <div>
+          <h1 class="brand-title">Resume Tailor</h1>
+          <p class="brand-subtitle">Upgrade rough bullets into high-impact Google XYZ accomplishments</p>
+        </div>
+      </div>
+      <div class="header-badge">Google XYZ Formula</div>
+    </header>
+
+    <!-- Formula Explainer Banner -->
+    <div class="formula-banner">
+      <div class="formula-pill">Accomplished <span class="highlight">[X]</span></div>
+      <div class="formula-arrow">→</div>
+      <div class="formula-pill">as measured by <span class="highlight">[Y]</span></div>
+      <div class="formula-arrow">→</div>
+      <div class="formula-pill">by doing <span class="highlight">[Z]</span></div>
+    </div>
+
+    <!-- Error Banner -->
+    <div id="error-banner" class="alert-banner hidden" role="alert" aria-live="assertive">
+      <span class="alert-icon">⚠️</span>
+      <span id="error-message" class="alert-text"></span>
+      <button id="error-dismiss" class="alert-close" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- Dual Input Workspace -->
+    <main class="workspace">
+      <section class="input-grid">
+        <!-- Job Description Input -->
+        <div class="input-panel">
+          <div class="panel-header">
+            <label for="job-desc-input" class="panel-label">1. Target Job Description</label>
+            <span id="job-char-count" class="char-count">0 / 15,000</span>
+          </div>
+          <textarea
+            id="job-desc-input"
+            class="textarea"
+            placeholder="Paste the target role description, key responsibilities, and required qualifications here..."
+            rows="10"
+          ></textarea>
+        </div>
+
+        <!-- Current Resume Bullets Input -->
+        <div class="input-panel">
+          <div class="panel-header">
+            <label for="resume-input" class="panel-label">2. Current Resume Bullets</label>
+            <span id="resume-char-count" class="char-count">0 / 15,000</span>
+          </div>
+          <textarea
+            id="resume-input"
+            class="textarea"
+            placeholder="Paste 3–8 rough bullets or experience lines from your resume:&#10;&#10;• Built backend APIs for user auth&#10;• Managed PostgreSQL database migrations&#10;• Improved page load times"
+            rows="10"
+          ></textarea>
+        </div>
+      </section>
+
+      <!-- Action Dock -->
+      <div class="action-dock">
+        <button id="btn-tailor" class="btn btn-primary" disabled>
+          <span class="btn-text">Tailor Bullets</span>
+          <span class="btn-hint">Cmd + Enter</span>
+        </button>
+        <button id="btn-sample" class="btn-link" type="button">
+          ✨ Try with sample data
+        </button>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div id="loading-state" class="loading-state hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <div class="loading-text">
+          <strong>Elevating bullets to Google XYZ format...</strong>
+          <span>Aligning competencies and calibrating metrics (~3s)</span>
+        </div>
+      </div>
+
+      <!-- Results Stream -->
+      <section id="results-section" class="results-section hidden" aria-live="polite">
+        <div class="results-toolbar">
+          <div class="results-meta">
+            <h2 class="results-title">Tailored Accomplishments</h2>
+            <span id="role-summary-badge" class="badge-role"></span>
+            <span id="results-count" class="badge-count">0 Bullets</span>
+          </div>
+          <button id="btn-copy-all" class="btn btn-secondary">
+            📋 Copy All Bullets
+          </button>
+        </div>
+
+        <!-- Cards Container -->
+        <div id="cards-container" class="cards-stream"></div>
+      </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden" role="status" aria-live="polite">
+      <span class="toast-icon">✓</span>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
